@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import BarChart from "./components/BarChart";
 import Card from "./components/Card";
 import LineChart from "./components/LineChart";
@@ -125,11 +126,27 @@ const Home = () => {
           <h3 className="text-lg font-medium mb-4">Recent activity</h3>
           <ul>
             <li className="flex justify-between">
-              <span>Jane Smith</span>
+              <div className="flex items-center gap-2">
+                <Image src="/jane.svg" alt="Jane" width={34} height={34} />
+                <div>
+                  <h2>Jane Smith</h2>
+                  <span className="text-[#9EABB8] text-sm">
+                    Purchased Tickects
+                  </span>
+                </div>
+              </div>
               <span>$500</span>
             </li>
             <li className="flex justify-between mt-2">
-              <span>John Doe</span>
+              <div className="flex items-center gap-2">
+                <Image src="/doe.svg" alt="Jane" width={34} height={34} />
+                <div>
+                  <div>
+                    <h2 className="">John Doe</h2>
+                    <span className="text-[#9EABB8] text-sm">Registered</span>
+                  </div>
+                </div>
+              </div>
               <span>Free</span>
             </li>
           </ul>
