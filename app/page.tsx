@@ -4,6 +4,7 @@ import BarChart from "./components/BarChart";
 import Card from "./components/Card";
 import LineChart from "./components/LineChart";
 import Sidebar from "./components/SideBar";
+import { ChartOptions } from "chart.js";
 
 const Home = () => {
   const lineData = {
@@ -32,10 +33,38 @@ const Home = () => {
     ],
   };
 
-  const options = {
+  const lineOptions = {
     scales: {
       y: {
+        display: false,
+      },
+      x: {
         beginAtZero: true,
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
+
+  const barOptions: ChartOptions<"bar"> = {
+    indexAxis: "y",
+    scales: {
+      y: {
+        ticks: {
+          display: true,
+        },
+        grid: {
+          display: false,
+        },
+      },
+      x: {
+        beginAtZero: true,
+        ticks: {
+          display: false,
+        },
       },
     },
     plugins: {
@@ -60,36 +89,36 @@ const Home = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-[#121417] border border-[#3D4754] p-4 rounded-lg shadow-md">
-            <h3 className="text-lg font-medium mb-4">Registrants over time</h3>
-            <h2 text-lg font-medium mb-4>
-              30
-            </h2>
-            <span>24 hours</span>
-            <LineChart data={lineData} options={options} />
+            <div className="mb-8 p-2">
+              <h3 className="text-lg font-medium">Registrants over time</h3>
+              <h2 className="text-lg font-medium ">30</h2>
+              <span className="">24 hours</span>
+            </div>
+            <LineChart data={lineData} options={lineOptions} />
           </div>
           <div className="bg-[#121417] border border-[#3D4754] p-4 rounded-lg shadow-md">
-            <h3 className="text-lg font-medium mb-4">Check-ins over time</h3>
-            <h2 text-lg font-medium mb-4>
-              20
-            </h2>
-            <span>24 hours</span>
-            <LineChart data={lineData} options={options} />
+            <div className="mb-8 p-2">
+              <h3 className="text-lg font-medium">Check-ins over time</h3>
+              <h2 className="text-lg font-medium">20</h2>
+              <span>24 hours</span>
+            </div>
+            <LineChart data={lineData} options={lineOptions} />
           </div>
           <div className="bg-[#121417] border border-[#3D4754] p-4 rounded-lg shadow-md">
-            <h3 className="text-lg font-medium mb-4">Revenue over time</h3>
-            <h2 text-lg font-medium mb-4>
-              $12,500
-            </h2>
-            <span>24 hours</span>
-            <LineChart data={lineData} options={options} />
+            <div className="mb-8 p-2">
+              <h3 className="text-lg font-medium ">Revenue over time</h3>
+              <h2 className="text-lg font-medium">$12,500</h2>
+              <span>24 hours</span>
+            </div>
+            <LineChart data={lineData} options={lineOptions} />
           </div>
           <div className="bg-[#121417] border border-[#3D4754] p-4 rounded-lg shadow-md">
-            <h3 className="text-lg font-medium mb-4">Tickets sold</h3>
-            <h2 text-lg font-medium mb-4>
-              400k
-            </h2>
-            <span>24 hours</span>
-            <BarChart data={barData} options={options} />
+            <div className="mb-8 p-2">
+              <h3 className="text-lg font-medium ">Tickets sold</h3>
+              <h2 className="text-lg font-medium">400k</h2>
+              <span>24 hours</span>
+            </div>
+            <BarChart data={barData} options={barOptions} />
           </div>
         </div>
         <div className="mt-6 bg-[#121417] border border-[#3D4754] p-4 rounded-lg shadow-md">
