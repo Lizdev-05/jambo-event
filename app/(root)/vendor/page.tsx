@@ -1,6 +1,8 @@
 "use client";
-import Sidebar from "@/app/components/SideBar";
 import { useState } from "react";
+
+import PerformanceBar from "@/app/components/PerformanceBar";
+import Sidebar from "@/app/components/SideBar";
 
 type Vendor = {
   name: string;
@@ -8,6 +10,7 @@ type Vendor = {
   phone: string;
   lastEvent: string;
   performance: number;
+  status: "approved" | "pending";
 };
 
 const vendorsData: Vendor[] = [
@@ -17,6 +20,7 @@ const vendorsData: Vendor[] = [
     phone: "415-123-4567",
     lastEvent: "May 15, 2023",
     performance: 90,
+    status: "approved",
   },
   {
     name: "Floral Co.",
@@ -24,6 +28,7 @@ const vendorsData: Vendor[] = [
     phone: "415-987-6543",
     lastEvent: "May 15, 2023",
     performance: 85,
+    status: "approved",
   },
   {
     name: "AV Experts",
@@ -31,6 +36,7 @@ const vendorsData: Vendor[] = [
     phone: "415-246-1357",
     lastEvent: "May 15, 2023",
     performance: 92,
+    status: "approved",
   },
   {
     name: "Photography Pros",
@@ -38,6 +44,7 @@ const vendorsData: Vendor[] = [
     phone: "415-369-2581",
     lastEvent: "May 15, 2023",
     performance: 88,
+    status: "pending",
   },
   {
     name: "Entertainment Co.",
@@ -45,26 +52,30 @@ const vendorsData: Vendor[] = [
     phone: "415-582-7936",
     lastEvent: "May 15, 2023",
     performance: 86,
+    status: "pending",
   },
 ];
 
 const VendorsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [selectedTab, setSelectedTab] = useState("all");
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  const filteredVendors = vendorsData.filter((vendor) =>
-    vendor.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredVendors = vendorsData.filter((vendor) => {
+    if (selectedTab === "approved") return vendor.status === "approved";
+    if (selectedTab === "pending") return vendor.status === "pending";
+    return vendor.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (
     <div className="relative flex min-h-screen bg-[#121417] text-white">
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       <div
-        className={`flex-1 p-6bg-[#121417] text-white transition-all ${
+        className={`flex-1 p-6 bg-[#121417] text-white transition-all ${
           sidebarOpen ? "md:blur-none blur-md" : "blur-none"
         } md:ml-64`}
       >
@@ -86,6 +97,40 @@ const VendorsPage = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full p-2 mb-6 bg-gray-800 rounded"
           />
+          <div className="mb-6 border-b border-gray-700">
+            <div className="flex space-x-4">
+              <p
+                className={`py-2 cursor-pointer ${
+                  selectedTab === "all"
+                    ? "border-b-2 border-[#FFCE31]"
+                    : "text-gray-500"
+                }`}
+                onClick={() => setSelectedTab("all")}
+              >
+                All Vendors
+              </p>
+              <p
+                className={`py-2 cursor-pointer ${
+                  selectedTab === "approved"
+                    ? "border-b-2 border-[#FFCE31]"
+                    : "text-gray-500"
+                }`}
+                onClick={() => setSelectedTab("approved")}
+              >
+                Approved
+              </p>
+              <p
+                className={`py-2 cursor-pointer ${
+                  selectedTab === "pending"
+                    ? "border-b-2 border-[#FFCE31]"
+                    : "text-gray-500"
+                }`}
+                onClick={() => setSelectedTab("pending")}
+              >
+                Pending
+              </p>
+            </div>
+          </div>
           <div className="overflow-x-auto">
             <table className="min-w-full bg-gray-800 rounded-lg">
               <thead>
@@ -105,10 +150,13 @@ const VendorsPage = () => {
                     <td className="py-3 px-4">{vendor.email}</td>
                     <td className="py-3 px-4">{vendor.phone}</td>
                     <td className="py-3 px-4">{vendor.lastEvent}</td>
-                    <td className="py-3 px-4">{vendor.performance}</td>
+                    <td className="py-3 px-4 flex items-center space-x-2">
+                      <PerformanceBar performance={vendor.performance} />
+                      <span>{vendor.performance}</span>
+                    </td>
                     <td className="py-3 px-4">
                       <button className="px-4 py-2 bg-blue-500 rounded hover:bg-blue-700">
-                        Contact
+                        View Profile
                       </button>
                     </td>
                   </tr>
