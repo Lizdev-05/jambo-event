@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import BarChart from "./components/BarChart";
-import Card from "./components/Card";
-import LineChart from "./components/LineChart";
-import Sidebar from "./components/SideBar";
+import BarChart from "../components/BarChart";
+import Card from "../components/Card";
+import LineChart from "../components/LineChart";
+import Sidebar from "../components/SideBar";
 import { ChartOptions } from "chart.js";
 
 const Home = () => {
@@ -87,7 +87,7 @@ const Home = () => {
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       <div
         className={`flex-1 p-6 bg-[#121417] text-white transition-all ${
-          sidebarOpen ? "md:blur-none blur-md" : "blur-none"
+          sidebarOpen ? "md:blur-none " : "blur-none"
         } md:ml-64`}
       >
         <button

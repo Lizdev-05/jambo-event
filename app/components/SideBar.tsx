@@ -10,6 +10,12 @@ type SidebarProps = {
 };
 
 const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
+  const handleClick = () => {
+    if (isOpen) {
+      toggleSidebar();
+    }
+  };
+
   return (
     <>
       {isOpen && (
@@ -39,7 +45,7 @@ const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
               <Link
                 href="/"
                 className="hover:text-yellow-500 flex gap-2 items-center"
-                onClick={toggleSidebar}
+                onClick={handleClick}
               >
                 <Image
                   src="/dash-icon.svg"
@@ -54,7 +60,7 @@ const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
               <Link
                 href="/events"
                 className="hover:text-yellow-500 flex gap-2 items-center"
-                onClick={toggleSidebar}
+                onClick={handleClick}
               >
                 <Image
                   src="/event-icon.svg"
@@ -67,9 +73,9 @@ const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
             </li>
             <li className="mb-4">
               <Link
-                href="/vendors"
+                href="/vendor"
                 className="hover:text-yellow-500 flex gap-2 items-center"
-                onClick={toggleSidebar}
+                onClick={handleClick}
               >
                 <Image
                   src="/vendor-icon.svg"
@@ -84,7 +90,7 @@ const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
               <Link
                 href="/export"
                 className="hover:text-yellow-500 flex gap-2 items-center"
-                onClick={toggleSidebar}
+                onClick={handleClick}
               >
                 <Image
                   src="/export-icon.svg"
@@ -99,7 +105,7 @@ const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
               <Link
                 href="/audiences"
                 className="hover:text-yellow-500 flex gap-2 items-center"
-                onClick={toggleSidebar}
+                onClick={handleClick}
               >
                 <Image
                   src="/audience-icon.png"
@@ -116,7 +122,7 @@ const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
               <Link
                 href="/feedback"
                 className="hover:text-yellow-500 flex gap-2 items-center"
-                onClick={toggleSidebar}
+                onClick={handleClick}
               >
                 <Image
                   src="/feed-icon.svg"
@@ -131,7 +137,7 @@ const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
               <Link
                 href="/Help & Docs"
                 className="hover:text-yellow-500 flex gap-2 items-center"
-                onClick={toggleSidebar}
+                onClick={handleClick}
               >
                 <Image src="/help-icon.svg" alt="Help" width={18} height={18} />
                 Help & Docs
