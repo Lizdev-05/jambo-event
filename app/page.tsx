@@ -75,11 +75,11 @@ const Home = () => {
     },
   };
   return (
-    <div className="flex bg-[#121417] ">
+    <div className="flex bg-[#121417]">
       <Sidebar />
-      <div className="flex-1 p-6 bg-[#121417] text-white">
+      <div className="flex-1 p-6 bg-[#121417] text-white ml-64">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold ">Jambo Data</h1>
+          <h1 className="text-3xl font-bold">Jambo Data</h1>
           <span className="text-[#9EABB8] py-4">Real-time</span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
@@ -92,8 +92,8 @@ const Home = () => {
           <div className="bg-[#121417] border border-[#3D4754] p-4 rounded-lg shadow-md">
             <div className="mb-8 p-2">
               <h3 className="text-lg font-medium">Registrants over time</h3>
-              <h2 className="text-lg font-medium ">30</h2>
-              <span className="">24 hours</span>
+              <h2 className="text-lg font-medium">30</h2>
+              <span>24 hours</span>
             </div>
             <LineChart data={lineData} options={lineOptions} />
           </div>
@@ -107,7 +107,7 @@ const Home = () => {
           </div>
           <div className="bg-[#121417] border border-[#3D4754] p-4 rounded-lg shadow-md">
             <div className="mb-8 p-2">
-              <h3 className="text-lg font-medium ">Revenue over time</h3>
+              <h3 className="text-lg font-medium">Revenue over time</h3>
               <h2 className="text-lg font-medium">$12,500</h2>
               <span>24 hours</span>
             </div>
@@ -115,7 +115,7 @@ const Home = () => {
           </div>
           <div className="bg-[#121417] border border-[#3D4754] p-4 rounded-lg shadow-md">
             <div className="mb-8 p-2">
-              <h3 className="text-lg font-medium ">Tickets sold</h3>
+              <h3 className="text-lg font-medium">Tickets sold</h3>
               <h2 className="text-lg font-medium">400k</h2>
               <span>24 hours</span>
             </div>
@@ -131,7 +131,7 @@ const Home = () => {
                 <div>
                   <h2>Jane Smith</h2>
                   <span className="text-[#9EABB8] text-sm">
-                    Purchased Tickects
+                    Purchased Tickets
                   </span>
                 </div>
               </div>
